@@ -1,0 +1,23 @@
+.mark-paid-button {
+    width: 140px;
+    padding: 10px;
+    background: rgb(0, 188, 255);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none;
+}
+
+.mark-paid-button:hover {
+    background: rgb(62, 64, 149);
+}
+
+.inscriptions-buttons-container{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}

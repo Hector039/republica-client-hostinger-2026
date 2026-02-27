@@ -1,0 +1,47 @@
+.sistema-bajas-modif-botones {
+    display: flex;
+    gap: 25px;
+    justify-content: space-between;
+}
+
+.delete-event-button {
+    background: rgb(189, 36, 186);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: block;
+    width: auto;
+    margin: 10px auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+.delete-event-button:hover {
+    background: rgb(83, 39, 178);
+}
+
+.edit-event-button {
+    width: auto;
+    padding: 10px;
+    background: rgb(0, 188, 255);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none;
+}
+
+.edit-event-button:hover {
+    background: rgb(62, 64, 149);
+}
+
+.edit-event-buttons-container{
+    display: flex;
+    align-items: center;
+}

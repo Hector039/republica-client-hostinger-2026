@@ -1,0 +1,15 @@
+.text-info-restoration{
+    color: rgb(83, 39, 178);
+    text-align: center;
+    font-weight: bolder;
+    font-size: larger;
+}
+.text-info{
+    color: rgb(83, 39, 178);
+    text-align: center;
+}
+.forgot-buttons{
+    display: flex;
+    gap: 70px;
+    align-items: center;
+}

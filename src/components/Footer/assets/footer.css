@@ -1,0 +1,77 @@
+.footer-bar {
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.footer-brand img {
+    width: 150px;
+}
+
+.footer-main{
+    width: 100%;
+    background: linear-gradient(90deg, rgb(83, 39, 178), rgb(62, 64, 149));
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 90px;
+    padding-block: 30px;
+}
+
+
+.contacto-tres-footer {
+    display: flex;
+    gap: 10px;
+
+}
+
+.contacto-dos-footer {
+    display: flex;
+    gap: 10px;
+}
+
+.contacto-uno-footer {
+    display: flex;
+    gap: 10px;
+}
+
+
+.contacto-footer {
+    display: flex;
+    color: white;
+    gap:50px;
+}
+
+.footer-rights {
+    background: rgb(62, 64, 149);
+    padding: 10px;
+}
+
+.footer-rights p {
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.network-icon img {
+    width: 35px;
+}
+
+.contacto-uno-footer{
+    display: flex;
+    gap: 30px;
+}
+
+.footer-networks {
+    display: flex;
+    gap: 40px;
+    align-self: center;
+}
+.text-title{
+    font-size: larger;
+}
+.text-white{
+    font-weight: 500;
+}

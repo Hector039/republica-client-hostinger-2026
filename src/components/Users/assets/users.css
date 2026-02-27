@@ -1,0 +1,196 @@
+/* Estilos generales */
+.cuenta-main {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    background: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1,
+h2 {
+    color: rgb(83, 39, 178);
+    text-align: center;
+}
+
+/* Contenedor de login y registro */
+.cuenta-info {
+    padding: 20px;
+}
+
+.login-form {
+    width: auto;
+}
+
+.cuenta-registrarse {
+    width: 600px;
+    background: white;
+    padding: 20px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.cuenta-button {
+    width: 300px;
+    padding: 10px;
+    background: rgb(0, 188, 255);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none;
+}
+
+.cuenta-button:hover {
+    background: rgb(62, 64, 149);
+}
+
+.user-info-buttons {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+}
+
+/* Información del usuario */
+.user-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 16px;
+    margin: 5px 0;
+    text-align: center;
+}
+
+.user-info p {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Botones de acción */
+.boton-quitar-carrito {
+    background: rgb(189, 36, 186);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: block;
+    width: 200px;
+    margin: 10px auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+.boton-quitar-carrito:hover {
+    background: rgb(83, 39, 178);
+}
+
+/* QR Code */
+.qr-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.qr-container svg {
+    border: 2px solid rgb(83, 39, 178);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.info-button {
+    text-decoration: none;
+    background: rgb(0, 188, 255);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: block;
+    padding: 0.5rem 1rem;
+    width: 100px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.info-button:hover {
+    background: rgb(62, 64, 149);
+}
+
+.boton-forgot {
+    background: rgb(189, 36, 186);
+    color: white;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: block;
+    width: 200px;
+    margin: 10px auto;
+    text-align: center;
+    text-decoration: none;
+}
+
+.boton-forgot:hover {
+    background: rgb(83, 39, 178);
+}
+
+.tel-pre {
+    display: flex;
+    gap: 5px;
+}
+
+.tel_contact {
+    width: 100px !important;
+}
+
+.telephone {
+    display: flex;
+    gap: 5px;
+}
+
+.telephone-container {
+    display: flex;
+    gap: 15px;
+}
+
+.tel-prefix {
+    width: 50px !important;
+}
+
+.info-text-register {
+    color: rgb(83, 39, 178);
+    text-align: center;
+    font-weight: bold;
+    font-size: 1em !important;
+}

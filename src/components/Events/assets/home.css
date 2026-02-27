@@ -1,0 +1,119 @@
+/* Contenedor principal de bienvenida */
+.welcome-container {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.5rem;
+    color: rgb(83, 39, 178);
+}
+
+/* Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-block: 40px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+thead th{
+    font-size:larger;
+}
+
+th {
+    background: rgb(62, 64, 149);
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    color: #333;
+}
+
+tr:nth-child(even) {
+    background: #f5f5f5;
+}
+
+/* Botones */
+.table-buttons {
+    width: 90px;
+    background: rgb(189, 36, 186);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    text-decoration: none;
+}
+
+.table-buttons:hover {
+    background: rgb(83, 39, 178);
+}
+.table-buttons-container{
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+}
+/* Formulario de solicitud de encargue */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(83, 39, 178, 0.377);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+input {
+    font-size: 1rem;
+}
+
+select {
+    width: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.merch-inputs{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cuenta-button {
+    width: 300px;
+    padding: 10px;
+    background: rgb(0, 188, 255);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none;
+}
+
+.cuenta-button:hover {
+    background: rgb(62, 64, 149);
+}
+
+/* Contenedor de productos */
+.products-container {
+    margin-top: 40px;
+}

@@ -1,0 +1,32 @@
+.logout-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+    margin: 200px;
+    width: auto;
+    gap: 30px;
+}
+
+.logout-button{
+    width: 300px;
+    padding: 10px;
+    background: rgb(0, 188, 255);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none;
+    text-align: center;
+}
+
+.cuenta-button:hover {
+    background: rgb(62, 64, 149);
+}
