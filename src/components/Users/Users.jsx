@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
 import { useUser } from "../context/dataContext";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import axios from "../../config/axiosConfig";
@@ -143,8 +142,8 @@ export default function Users() {
 			})
 			.catch((error) => {
 				console.log(error);
-				if (error.response.data.message)
-					return toast.error(error.response.data.message);
+				if (error.response.data.error)
+					return toast.error(error.response.data.error);
 				toast.error("Ocurrió un error inesperado. Intenta de nuevo");
 			});
 	};

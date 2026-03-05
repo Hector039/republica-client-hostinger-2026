@@ -43,6 +43,7 @@ export default function MasInfo() {
 		axios
 			.get(urlMerchRequests + user.id_user)
 			.then((response) => {
+				//console.log("user merch in fetchMRech: ", response.data);
 				setMerchRequests(response.data);
 			})
 			.catch((error) => {
