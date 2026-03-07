@@ -134,6 +134,7 @@ export default function SystemDebtors() {
 					<option value="todo">Todos</option>
 					<option value="peques 1">peques 1</option>
 					<option value="peques 2">peques 2</option>
+					<option value="peques 3">peques 3</option>
 					<option value="gimnasia 1">gimnasia 1</option>
 					<option value="gimnasia 2">gimnasia 2</option>
 					<option value="gimnasia 3">gimnasia 3</option>
@@ -142,6 +143,7 @@ export default function SystemDebtors() {
 					<option value="entrenamiento 1">entrenamiento 1</option>
 					<option value="entrenamiento 2">entrenamiento 2</option>
 					<option value="mañana">mañana</option>
+					<option value="baile">baile</option>
 				</select>
 				<input
 					type="date"

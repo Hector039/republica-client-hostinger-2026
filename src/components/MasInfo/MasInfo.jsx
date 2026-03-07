@@ -309,7 +309,6 @@ export default function MasInfo() {
 						<table>
 							<thead>
 								<tr>
-									<th>Fecha de publicación</th>
 									<th>Fecha del evento</th>
 									<th>Nombre</th>
 									<th>Descripción</th>

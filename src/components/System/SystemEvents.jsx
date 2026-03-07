@@ -75,6 +75,7 @@ export default function SystemEvents() {
 		const groupArray = [
 			e.peques_1,
 			e.peques_2,
+			e.peques_3,
 			e.gimnasia_1,
 			e.gimnasia_2,
 			e.gimnasia_3,
@@ -83,6 +84,7 @@ export default function SystemEvents() {
 			e.entrenamiento_1,
 			e.entrenamiento_2,
 			e.maniana,
+			e.baile,
 		];
 		const groupsCleaned = groupArray.filter((group) => group !== false);
 
@@ -185,6 +187,16 @@ export default function SystemEvents() {
 						<div className="group_list">
 							<input
 								type="checkbox"
+								id="peques3"
+								name="peques 3"
+								value="peques 3"
+								{...register("peques_3")}
+							/>
+							<label htmlFor="peques3">peques 3</label>
+						</div>
+						<div className="group_list">
+							<input
+								type="checkbox"
 								id="gimnasia1"
 								name="gimnasia 1"
 								value="gimnasia 1"
@@ -261,6 +273,16 @@ export default function SystemEvents() {
 								{...register("maniana")}
 							/>
 							<label htmlFor="maniana">mañana</label>
+						</div>
+						<div className="group_list">
+							<input
+								type="checkbox"
+								id="baile"
+								name="baile"
+								value="baile"
+								{...register("baile")}
+							/>
+							<label htmlFor="baile">baile</label>
 						</div>
 					</div>
 
