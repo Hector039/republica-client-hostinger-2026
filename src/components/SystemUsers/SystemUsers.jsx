@@ -109,17 +109,31 @@ export default function SystemUsers() {
 	}
 
 	function handleDownloadExcel() {
+		const sortedUsers = users.sort((a, b) =>
+			a.last_name.localeCompare(b.last_name),
+		);
+		sortedUsers.forEach((user) => {
+			delete user.id_user;
+			delete user.id_fee;
+			delete user.user_status;
+			user["register_date"] = new Date(user.register_date).toLocaleDateString(
+				"es-ES",
+				{
+					day: "2-digit",
+					month: "2-digit",
+					year: "numeric",
+				},
+			);
+		});
+
 		const header = [
-			"ID usuario",
 			"Apellido",
 			"Nombre",
 			"DNI",
 			"Fecha Ingreso",
 			"Nacimiento",
-			"Estatus",
 			"Telefono",
 			"Grupo",
-			"ID tarifa",
 			"Tarifa",
 		];
 		downloadExcel({
@@ -127,7 +141,7 @@ export default function SystemUsers() {
 			sheet: "Usuarios",
 			tablePayload: {
 				header,
-				body: users,
+				body: sortedUsers,
 			},
 		});
 	}
