@@ -147,23 +147,16 @@ input {
   transition: background 0.3s;
 }
 
+.boton-quitar-carrito-disabled {
+  background: rgb(109, 109, 109);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
 .boton-quitar-carrito:hover {
   background: rgb(83, 39, 178);
-}
-
-/* QR Code */
-.qr-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.qr-container svg {
-  border: 2px solid rgb(83, 39, 178);
-  border-radius: 10px;
-  padding: 10px;
 }
 
 .info-button {
@@ -804,27 +797,35 @@ select {
 .is_open {
   padding: 10px;
   background: rgb(81, 255, 0);
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-size: 16px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
   align-self: center;
-  margin-bottom: 40px;
+  margin-top: 10px;
 }
 
 .is_closed {
   padding: 10px;
   background: rgb(255, 94, 0);
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-size: 16px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
   align-self: center;
-  margin-bottom: 40px;
+  margin-top: 10px;
+}
+
+.is_open:hover {
+  background: rgba(81, 255, 0, 0.453);
+}
+
+.is_closed:hover {
+  background: rgba(255, 94, 0, 0.477);
 }
 
 .unpaid_container {

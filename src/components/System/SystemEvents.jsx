@@ -5,41 +5,14 @@ import axios from "../../config/axiosConfig";
 import { toast } from "react-toastify";
 
 const urlEvents = "events/";
-const urlGetFeaturesPositions = "utils/openclosefeatures";
-const urlUpdateFeaturesPositions = "utils/openclosefeatures/";
+const urlChangeEventStatus = "events/changeeventstatus/";
 
 export default function SystemEvents() {
 	const [events, setEvents] = useState([]);
-	const [featurePosition, setFeaturePosition] = useState(0);
 
 	const { register, handleSubmit, reset } = useForm({
 		mode: "onBlur",
 	});
-
-	function openCloseFeatures(fid, position) {
-		const pos = position ? 0 : 1;
-		axios
-			.put(urlUpdateFeaturesPositions + fid + "/" + pos)
-			.then((response) => {
-				setFeaturePosition(pos);
-			})
-			.catch((error) => {
-				toast.error("Ocurrió un error inesperado. Intenta de nuevo");
-				console.log(error);
-			});
-	}
-
-	function fetchPositions() {
-		axios
-			.get(urlGetFeaturesPositions)
-			.then((response) => {
-				setFeaturePosition(response.data[1].feature);
-			})
-			.catch((error) => {
-				toast.error("Ocurrió un error inesperado. Intenta de nuevo");
-				console.log(error);
-			});
-	}
 
 	function fetchEvents() {
 		axios
@@ -55,7 +28,6 @@ export default function SystemEvents() {
 
 	useEffect(() => {
 		fetchEvents();
-		fetchPositions();
 	}, []);
 
 	function deleteEvent(eid) {
@@ -63,6 +35,19 @@ export default function SystemEvents() {
 			.delete(urlEvents + eid, { withCredentials: true })
 			.then((response) => {
 				toast.success("Se eliminó el evento correctamente.");
+				fetchEvents();
+			})
+			.catch((error) => {
+				toast.error("Ocurrió un error inesperado. Intenta de nuevo");
+				console.log(error);
+			});
+	}
+
+	function changeEventStatus(eid) {
+		axios
+			.put(urlChangeEventStatus + eid, { withCredentials: true })
+			.then((response) => {
+				toast.success("Se cambió el estado del evento correctamente.");
 				fetchEvents();
 			})
 			.catch((error) => {
@@ -113,25 +98,6 @@ export default function SystemEvents() {
 
 	return (
 		<div className="sistema-container">
-			{featurePosition ?
-				<button
-					className="is_open"
-					onClick={() => {
-						openCloseFeatures(2, featurePosition);
-					}}
-				>
-					Eventos habilitados
-				</button>
-			:	<button
-					className="is_closed"
-					onClick={() => {
-						openCloseFeatures(2, featurePosition);
-					}}
-				>
-					Eventos deshabilitados
-				</button>
-			}
-
 			<h1>Crear eventos:</h1>
 
 			<div className="altas">
@@ -344,6 +310,20 @@ export default function SystemEvents() {
 											>
 												Editar
 											</NavLink>
+											{event.is_open ?
+												<button
+													className="is_open"
+													onClick={() => changeEventStatus(event.id_event)}
+												>
+													Habilitado
+												</button>
+											:	<button
+													className="is_closed"
+													onClick={() => changeEventStatus(event.id_event)}
+												>
+													Deshabilitado
+												</button>
+											}
 										</th>
 									</tr>
 								))}

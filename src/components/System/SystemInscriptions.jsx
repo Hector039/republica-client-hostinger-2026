@@ -47,14 +47,12 @@ export default function SystemInscriptions() {
 			.delete(urlInscriptions + iid)
 			.then((response) => {
 				toast.success("Se eliminó la inscripción correctamente.");
+				const valuesFromStorage = {
+					search: sessionStorage.getItem("search") || "last_name",
+					value: sessionStorage.getItem("value") || "",
+				};
 
-				if (sessionStorage.getItem("search")) {
-					const valuesFromStorage = {
-						search: sessionStorage.getItem("search"),
-						value: sessionStorage.getItem("value"),
-					};
-					getInscriptionsUsers(valuesFromStorage);
-				}
+				getInscriptionsUsers(valuesFromStorage);
 			})
 			.catch((error) => {
 				toast.error("Ocurrió un error inesperado. Intenta de nuevo");
@@ -85,13 +83,13 @@ export default function SystemInscriptions() {
 			})
 			.then((response) => {
 				toast.success("Se registró el pago.");
-				if (sessionStorage.getItem("search")) {
-					const valuesFromStorage = {
-						search: sessionStorage.getItem("search"),
-						value: sessionStorage.getItem("value"),
-					};
-					getInscriptionsUsers(valuesFromStorage);
-				}
+
+				const valuesFromStorage = {
+					search: sessionStorage.getItem("search") || "last_name",
+					value: sessionStorage.getItem("value") || "",
+				};
+
+				getInscriptionsUsers(valuesFromStorage);
 				setAmounts((prev) => ({ ...prev, [iid]: "" }));
 			})
 			.catch((error) => {
@@ -101,6 +99,37 @@ export default function SystemInscriptions() {
 	}
 
 	function handleDownloadExcel() {
+		const sortedinscriptionsReq = inscriptionsReq
+			.map((inscReq) => ({ ...inscReq }))
+			.sort((a, b) => a.last_name.localeCompare(b.last_name));
+
+		sortedinscriptionsReq.forEach((inscReq) => {
+			delete inscReq.id_inscription;
+			inscReq["pay_date"] =
+				inscReq["pay_date"] ?
+					new Date(inscReq.pay_date).toLocaleDateString("es-ES", {
+						day: "2-digit",
+						month: "2-digit",
+						year: "numeric",
+					})
+				:	"-";
+			inscReq["event_date"] = new Date(inscReq.event_date).toLocaleDateString(
+				"es-ES",
+				{
+					day: "2-digit",
+					month: "2-digit",
+					year: "numeric",
+				},
+			);
+			inscReq["inscription_date"] = new Date(
+				inscReq.inscription_date,
+			).toLocaleDateString("es-ES", {
+				day: "2-digit",
+				month: "2-digit",
+				year: "numeric",
+			});
+		});
+
 		const header = [
 			"Apellido",
 			"Nombre",
@@ -110,16 +139,12 @@ export default function SystemInscriptions() {
 			"Precio",
 			"Fecha Inscrp",
 			"Fecha Pago",
-			"ID Insc",
 			"Entregó",
 		];
 		downloadExcel({
 			fileName: "Inscripciones",
 			sheet: "Inscripciones",
-			tablePayload: {
-				header,
-				body: inscriptionsReq,
-			},
+			tablePayload: { header, body: sortedinscriptionsReq },
 		});
 	}
 

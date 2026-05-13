@@ -23,7 +23,6 @@ export default function MasInfo() {
 	const [merchRequests, setMerchRequests] = useState([]);
 	const [products, setProducts] = useState([]);
 	const [featureMerchPosition, setFeatureMerchPosition] = useState(0);
-	const [featureEventPosition, setFeatureEventPosition] = useState(0);
 	const { user } = useUser();
 
 	function fetchPositions() {
@@ -31,7 +30,6 @@ export default function MasInfo() {
 			.get(urlGetFeaturesPositions)
 			.then((response) => {
 				setFeatureMerchPosition(response.data[0].feature);
-				setFeatureEventPosition(response.data[1].feature);
 			})
 			.catch((error) => {
 				toast.error("Ocurrió un error inesperado. Intenta de nuevo");
@@ -75,7 +73,6 @@ export default function MasInfo() {
 						if (group == user.user_group) userEventArray.push(event);
 					});
 				});
-
 				setEvents(userEventArray);
 			})
 			.catch((error) => {
@@ -305,7 +302,7 @@ export default function MasInfo() {
 			<div className="products-container">
 				<div className="table_container">
 					<h2>Eventos, Inscripciones y Beneficios</h2>
-					{events.length != 0 && user && featureEventPosition ?
+					{events.length != 0 && user ?
 						<table>
 							<thead>
 								<tr>
@@ -329,10 +326,15 @@ export default function MasInfo() {
 										<th>${event.inscription_price}</th>
 										<th>
 											<button
-												className="boton-quitar-carrito"
+												className={
+													event.is_open ?
+														"boton-quitar-carrito"
+													:	"boton-quitar-carrito-disabled"
+												}
 												onClick={() => {
 													sendInscription(event.id_event, user.id_user);
 												}}
+												disabled={event.is_open ? false : true}
 											>
 												Inscribirme
 											</button>

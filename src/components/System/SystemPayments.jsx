@@ -165,8 +165,12 @@ export default function SystemPayments() {
 
 	function changeUserSearch(value) {
 		const date = new Date();
-		if (value === "monthly_pay_date" || value === "annual_pay_date") {
-			console.log(value);
+		if (
+			value === "monthly_pay_date_cash" ||
+			value === "monthly_pay_date_electronic" ||
+			value === "annual_pay_date_cash" ||
+			value === "annual_pay_date_electronic"
+		) {
 			setUserSearch(true);
 			setValue(
 				"value",
@@ -177,6 +181,7 @@ export default function SystemPayments() {
 					String(date.getDate()).padStart(2, "0"),
 			);
 		} else {
+			setUsers([]);
 			setUserSearch(false);
 			setValue("value", "");
 		}
@@ -202,8 +207,18 @@ export default function SystemPayments() {
 						<option value="dni">DNI</option>
 						<option value="user_group">Grupo</option>
 						<option value="user_status">Estado (0 o 1)</option>
-						<option value="monthly_pay_date">Fecha de pago cuota</option>
-						<option value="annual_pay_date">Fecha de pago matrícula</option>
+						<option value="monthly_pay_date_cash">
+							Fecha de pago cuota efectivo
+						</option>
+						<option value="monthly_pay_date_electronic">
+							Fecha de pago cuota electrónico
+						</option>
+						<option value="annual_pay_date_cash">
+							Fecha de pago matrícula efectivo
+						</option>
+						<option value="annual_pay_date_electronic">
+							Fecha de pago matrícula electrónica
+						</option>
 						<option value="TODO">Todo</option>
 					</select>
 				</label>
@@ -221,6 +236,13 @@ export default function SystemPayments() {
 					</label>
 				}
 
+				{userSearch && (
+					<p>
+						Nota: Esta tipo de consulta por fecha busca los usuarios con registros ya
+						existentes efectuados en la fecha proporcionada
+					</p>
+				)}
+
 				<button type="submit" className="cuenta-button">
 					Buscar
 				</button>
@@ -235,10 +257,8 @@ export default function SystemPayments() {
 								<th>Nombre</th>
 								<th>Apellido</th>
 								<th>DNI</th>
-								<th>Registrado</th>
-								<th>Estado</th>
 								<th>Tarifa</th>
-								<th>Última impaga</th>
+								<th>Último impago</th>
 								<th>Entregó</th>
 								<th>Fecha a registrar</th>
 							</tr>
@@ -257,41 +277,31 @@ export default function SystemPayments() {
 									<th>{user.first_name}</th>
 									<th>{user.last_name}</th>
 									<th>{user.dni}</th>
-									<th>
-										{new Date(user.register_date).toLocaleDateString("en-GB", {
-											timeZone: "UTC",
-										})}
-									</th>
-									<th>{user.user_status ? "ACTIVO" : "INACTIVO"}</th>
 									<th>{user.fee_descr}</th>
 
 									<th>
-										{userSearch ?
-											"Sin datos"
-										:	<div className="unpaid_container">
-												<p>
-													{user.last_unpaid_month ? user.last_unpaid_month : "---"}/
-													{user.last_unpaid_month_year ? user.last_unpaid_month_year : "---"}
-												</p>
-												<p>{user.last_unpaid_year ? user.last_unpaid_year : "---"}</p>
-											</div>
-										}
+										<div className="unpaid_container">
+											<p>
+												{user.month_paid ? user.month_paid : "---"}/
+												{user.year_paid ? user.year_paid : "---"}
+											</p>
+											<p>{user.annual_pending_year ? user.annual_pending_year : "---"}</p>
+										</div>
 									</th>
 
 									<th>
-										{userSearch ?
-											"Sin datos"
-										:	<div className="unpaid_container">
-												<p>
-													{user.last_unpaid_month_amount ?
-														"$" + user.last_unpaid_month_amount
-													:	"---"}
-												</p>
-												<p>
-													{user.last_unpaid_amount ? "$" + user.last_unpaid_amount : "---"}
-												</p>
-											</div>
-										}
+										<div className="unpaid_container">
+											<p>
+												{user.last_unpaid_month_amount ?
+													"$" + user.last_unpaid_month_amount
+												:	"---"}
+											</p>
+											<p>
+												{user.annual_pending_amount ?
+													"$" + user.annual_pending_amount
+												:	"---"}
+											</p>
+										</div>
 									</th>
 
 									<th>
