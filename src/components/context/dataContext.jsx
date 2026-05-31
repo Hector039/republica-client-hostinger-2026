@@ -30,7 +30,8 @@ export const UserProvider = ({ children }) => {
 		try {
 			const token = localStorage.getItem(TOKEN_STORAGE_KEY);
 			if (!token) {
-				setIsLoggedIn(false);
+				localStorage.removeItem(USER_STORAGE_KEY);
+				setUser(null);
 				return;
 			}
 			setIsLoggedIn(true);
@@ -42,6 +43,9 @@ export const UserProvider = ({ children }) => {
 
 	const logout = async () => {
 		setUser(null);
+		setIsLoggedIn(false);
+		localStorage.removeItem(USER_STORAGE_KEY);
+		localStorage.removeItem(TOKEN_STORAGE_KEY);
 	};
 
 	useEffect(() => {

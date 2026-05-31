@@ -26,6 +26,8 @@ import Monthly from "./components/Monthly/Monthly";
 import DailyElectronic from "./components/Daily/DailyElectronic";
 import MonthlyElectronic from "./components/Monthly/MonthlyElectronic";
 import ProductFees from "./components/Fees/ProductFees";
+import Lottery from "./components/Lottery/Lottery";
+import SystemLottery from "./components/System/SystemLottery";
 
 export default function App() {
 	return (
@@ -76,12 +78,13 @@ export default function App() {
 						path={"/debtorpaymentshistory/:uid"}
 						element={<DebtorPaymentsHistory />}
 					/>
-
 					<Route
 						exact
 						path={"/adminnotifications"}
 						element={<AdminNotifications />}
 					/>
+					<Route exact path={"/sorteos"} element={<Lottery />} />
+					<Route exact path={"/administrationlottery"} element={<SystemLottery />} />
 				</Routes>
 				<Footer />
 			</BrowserRouter>

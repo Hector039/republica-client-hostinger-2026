@@ -943,3 +943,48 @@ select {
   }
 
 }
+
+.sold-numbers-container {
+  margin-block: 30px;
+}
+
+.daily-container {
+  margin-top: 30px;
+}
+
+.lottery-create-title {
+  margin-top: 30px;
+}
+
+.create-lottery-container {
+  margin-bottom: 30px;
+}
+
+.daily-paragraph {
+  text-align: center;
+}
+
+.asign_buttons_container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 200px;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.lottery-number-input {
+  width: 70px;
+  text-align: center;
+}
+
+.asign_form_container {
+  width: 100px;
+}
+
+.sold-numbers-paragraph {
+  text-align: center;
+  font-weight: 700;
+  font-size: large;
+}

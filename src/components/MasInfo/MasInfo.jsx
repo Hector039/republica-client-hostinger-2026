@@ -16,6 +16,7 @@ const urlSendMerchRequests = "merchrequests/addmerchrequest/";
 //const urlDeleteMerchRequests = "merchrequests/"
 const urlGetFeaturesPositions = "utils/openclosefeatures";
 const urlGetProducts = "utils/getproducts/";
+const urlGetUserLotteryPayments = "lottery/get-user-lottery-payments/";
 
 export default function MasInfo() {
 	const [events, setEvents] = useState([]);
@@ -23,6 +24,7 @@ export default function MasInfo() {
 	const [merchRequests, setMerchRequests] = useState([]);
 	const [products, setProducts] = useState([]);
 	const [featureMerchPosition, setFeatureMerchPosition] = useState(0);
+	const [userLotteryPayments, setUserLotteryPayments] = useState([]);
 	const { user } = useUser();
 
 	function fetchPositions() {
@@ -93,12 +95,27 @@ export default function MasInfo() {
 			});
 	}
 
+	function fetchLotteryPayments() {
+		axios
+			.get(urlGetUserLotteryPayments + user.id_user)
+			.then((response) => {
+				console.log("user lotery payments in mas info: ", response.data);
+
+				setUserLotteryPayments(response.data);
+			})
+			.catch((error) => {
+				console.log(error);
+				toast.error(error);
+			});
+	}
+
 	useEffect(() => {
 		fetchPositions();
 		fetchEvents();
 		fecthMerch();
 		fetchInscr();
 		fetchProducts();
+		fetchLotteryPayments();
 	}, []);
 
 	const { register, handleSubmit, setValue } = useForm({
@@ -369,10 +386,36 @@ export default function MasInfo() {
 						</table>
 					}
 				</div>
-				<NavLink to={"/"} className="info-button">
-					Volver
-				</NavLink>
 			</div>
+
+			{userLotteryPayments.length != 0 && (
+				<div className="table_container">
+					<h2>Sorteos</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Sorteo</th>
+								<th>Número</th>
+								<th>Monto</th>
+								<th>Estado</th>
+							</tr>
+						</thead>
+						<tbody>
+							{userLotteryPayments.map((lotteryPayment) => (
+								<tr key={lotteryPayment.id_payment}>
+									<th>{lotteryPayment.title}</th>
+									<th>{lotteryPayment.lottery_number}</th>
+									<th>${lotteryPayment.amount}</th>
+									<th>{lotteryPayment.pay_date ? "PAGÓ" : "PENDIENTE"}</th>
+								</tr>
+							))}
+						</tbody>
+					</table>
+					<NavLink to={"/"} className="info-button">
+						Volver
+					</NavLink>
+				</div>
+			)}
 		</>
 	);
 }

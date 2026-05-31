@@ -75,6 +75,15 @@ export default function NavBar() {
 						>
 							Encargues
 						</NavLink>
+						<NavLink
+							to={"/administrationlottery"}
+							className="navbar-item-sistema"
+							style={({ isActive }) => {
+								return { fontWeight: isActive ? "bold" : "" };
+							}}
+						>
+							Sorteos
+						</NavLink>
 					</>
 				:	<>
 						<NavLink

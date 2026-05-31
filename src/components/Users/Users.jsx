@@ -500,6 +500,9 @@ export default function Users() {
 							<NavLink to={`/administrationdebtors`} className="get-debtors-button">
 								Consultar deudores activos
 							</NavLink>
+							<NavLink to={`/sorteos`} className="get-debtors-button">
+								Administrar Sorteos
+							</NavLink>
 							<NavLink to={`/fees`} className="get-debtors-button">
 								Tarifario de cuotas
 							</NavLink>
