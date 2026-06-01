@@ -152,6 +152,7 @@ export default function SystemLottery() {
 							Apellido
 						</option>
 						<option value="first_name">Nombre</option>
+						<option value="lottery_number">Número</option>
 						<option value="dni">DNI</option>
 						<option value="user_group">Grupo</option>
 						<option value="user_status">Estado (0 o 1)</option>
